@@ -19,4 +19,4 @@ spec:
             - name: REDIS_HOST # name of the ENV variable
               value: redis-cluster-ip-service # how we are connecting to the service
             - name: REDIS_PORT
-              value: 6379
+              value: "6379"
