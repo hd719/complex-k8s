@@ -25,3 +25,9 @@ spec:
             - name: postgres-storage # the volume we want to use
               mountPath: /var/lib/postgresql/data # where the data is going to live
               subPath: postgres # any data that we save, a folder called postgres (inside the persistent volume) is going to have our data
+          env:
+            - name: PGPASSWORD # once postgres sees this env name PGPASSWORD it will know to use this password instead of the default
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
