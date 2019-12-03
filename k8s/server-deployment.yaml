@@ -30,3 +30,8 @@ spec:
               value: 5432
             - name: PGDATABASE
               value: postgres
+            - name: PGPASSWORD # the env variable and how the password will show up in the container, the name PGPASSWORD is not related to the secret
+              valueFrom: # Get the value for this ENV variable from some config
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD # the key has to be the same that we used in the command to create the secret object
