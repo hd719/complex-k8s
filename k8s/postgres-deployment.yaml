@@ -12,8 +12,16 @@ spec:
       labels:
         component: postgres
     spec:
+      volumes: # this right here is what sets up the request to k8s and says I need 2gb to run the app.
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim # make k8s realize if it needs to go to local hard drive or go to a cloud provider and the provision
       containers:
         - name: postgres
           image: postgres
           ports:
             - containerPort: 5432
+          volumeMounts: # once we get accessed to our storage we specify how we want it to be used in our container
+            - name: postgres-storage # the volume we want to use
+              mountPath: /var/lib/postgresql/data # where the data is going to live
+              subPath: postgres # any data that we save, a folder called postgres (inside the persistent volume) is going to have our data
