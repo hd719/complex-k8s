@@ -1,5 +1,5 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: server-cluster-ip-service
 spec:
@@ -9,4 +9,3 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-
