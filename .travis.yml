@@ -13,7 +13,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project primeval-lotus-261214
   - gcloud config set compute/zone us-east4-a
-  - gcloud container clusters get-credentials complex-clusters
+  - gcloud container clusters get-credentials complex-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
   - docker build -t hd719/react-test -f ./client/Dockerfile.dev ./client
 
