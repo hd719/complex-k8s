@@ -10,7 +10,7 @@ docker push hd719/complex-client:$SHA
 docker push hd719/complex-server:$SHA
 docker push hd719/complex-worker:$SHA
 
-kubectl applt -f k8s
+kubectl apply -f k8s
 kubectl set image deployments/server-deployments server=hd719/complex-server:SHA
 kubectl set image deployments/client-deployments client=hd719/complex-client:SHA
 kubectl set image deployments/worker-deployments worker=hd719/complex-worker:SHA
